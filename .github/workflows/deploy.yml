@@ -86,16 +86,25 @@ jobs:
           ls -la out/.nojekyll || echo "WARNING: .nojekyll not found!"
           echo ""
           echo "=== Checking for _next folder ==="
-          ls -la out/_next/static/chunks/ | head -10 || echo "WARNING: _next folder not found!"
+          ls -la out/_next/static/chunks/ | head -15 || echo "WARNING: _next folder not found!"
           echo ""
           echo "=== CSS files in chunks ==="
-          find out/_next/static/chunks -name "*.css" || echo "WARNING: No CSS files found!"
+          find out/_next/static/chunks -name "*.css" -exec ls -lh {} \; || echo "WARNING: No CSS files found!"
+          echo ""
+          echo "=== Verifying specific CSS file exists ==="
+          if [ -f "out/_next/static/chunks/05ba829a2c04d516.css" ]; then
+            echo "✓ CSS file found!"
+            ls -lh out/_next/static/chunks/05ba829a2c04d516.css
+            echo "File size check:"
+            wc -c out/_next/static/chunks/05ba829a2c04d516.css
+          else
+            echo "✗ CSS file missing!"
+            echo "Available files in chunks:"
+            ls -la out/_next/static/chunks/ | grep -E "\.css|\.js" | head -10
+          fi
           echo ""
           echo "=== Total files count ==="
           find out -type f | wc -l
-          echo ""
-          echo "=== Verifying CSS file exists ==="
-          test -f out/_next/static/chunks/05ba829a2c04d516.css && echo "✓ CSS file found!" || echo "✗ CSS file missing!"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
