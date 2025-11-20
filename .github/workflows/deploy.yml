@@ -12,6 +12,9 @@ permissions:
   pages: write
   id-token: write
 
+# Ensure GitHub Pages is enabled in repository settings:
+# Settings → Pages → Source: "GitHub Actions"
+
 concurrency:
   group: "pages"
   cancel-in-progress: false
