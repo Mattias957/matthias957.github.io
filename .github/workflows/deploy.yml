@@ -138,6 +138,36 @@ jobs:
           echo "Checking _next folder structure:"
           ls -la out/_next/static/chunks/ | head -5
 
+      - name: Verify .nojekyll before upload
+        run: |
+          echo "=== Final check before upload ==="
+          echo "Current directory:"
+          pwd
+          echo ""
+          echo "Listing out directory:"
+          ls -la out/ | head -10
+          echo ""
+          echo "Verifying .nojekyll exists and is in root:"
+          if [ -f "out/.nojekyll" ]; then
+            echo "✓ .nojekyll exists at out/.nojekyll"
+            ls -la out/.nojekyll
+            echo "File content (should be empty):"
+            cat out/.nojekyll || echo "(empty file)"
+          else
+            echo "✗ ERROR: .nojekyll NOT FOUND in out/"
+            echo "Creating it now..."
+            touch out/.nojekyll
+            ls -la out/.nojekyll
+          fi
+          echo ""
+          echo "Verifying _next folder:"
+          if [ -d "out/_next" ]; then
+            echo "✓ _next folder exists"
+            ls -la out/_next/static/chunks/ | head -3
+          else
+            echo "✗ ERROR: _next folder NOT FOUND"
+          fi
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
