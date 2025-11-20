@@ -150,4 +150,15 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      
+      - name: Deployment info
+        run: |
+          echo "Site deployed to: ${{ steps.deployment.outputs.page_url }}"
+          echo ""
+          echo "Note: GitHub Pages may take a few minutes to update."
+          echo "If CSS still doesn't load:"
+          echo "1. Wait 2-3 minutes for GitHub Pages to process"
+          echo "2. Hard refresh your browser (Ctrl+F5 or Cmd+Shift+R)"
+          echo "3. Check if .nojekyll is accessible at: ${{ steps.deployment.outputs.page_url }}/.nojekyll"
+          echo "4. Check if CSS is accessible at: ${{ steps.deployment.outputs.page_url }}/_next/static/chunks/d98cb5eccc663e52.css"
 
