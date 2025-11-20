@@ -46,10 +46,15 @@ jobs:
 
       - name: Create .nojekyll file
         run: |
-          # Ensure .nojekyll exists (empty file is standard)
+          # Ensure .nojekyll exists in both public (for build) and out (for deployment)
+          # The one in public/ gets copied during build, but we also create it in out/ to be sure
+          touch public/.nojekyll
           touch out/.nojekyll
-          echo "Created .nojekyll file"
-          ls -la out/.nojekyll
+          echo "Created .nojekyll files"
+          echo "In public folder:"
+          ls -la public/.nojekyll || echo "WARNING: Not in public/"
+          echo "In out folder:"
+          ls -la out/.nojekyll || echo "WARNING: Not in out/"
 
       - name: Verify build output
         run: |
