@@ -43,9 +43,10 @@ jobs:
 
       - name: Create .nojekyll file
         run: |
+          # Ensure .nojekyll exists (empty file is standard)
           touch out/.nojekyll
           echo "Created .nojekyll file"
-          ls -la out/ | head -10
+          ls -la out/.nojekyll
 
       - name: Verify build output
         run: |
@@ -62,11 +63,12 @@ jobs:
 
       - name: Ensure .nojekyll is present
         run: |
-          echo "Creating .nojekyll file with explicit content..."
-          echo "# GitHub Pages - do not process with Jekyll" > out/.nojekyll
+          echo "Creating empty .nojekyll file (standard practice)..."
+          touch out/.nojekyll
           echo ".nojekyll file status:"
           ls -la out/.nojekyll
-          cat out/.nojekyll
+          echo "File size (should be 0):"
+          wc -c out/.nojekyll
           echo ""
           echo "Verifying .nojekyll is in artifact root:"
           test -f out/.nojekyll && echo "✓ .nojekyll exists" || echo "✗ .nojekyll missing"
@@ -116,6 +118,22 @@ jobs:
           echo ""
           echo "=== Total files count ==="
           find out -type f | wc -l
+
+      - name: Final verification before upload
+        run: |
+          echo "=== Final verification ==="
+          echo "Checking .nojekyll in artifact root:"
+          test -f out/.nojekyll && echo "✓ .nojekyll exists" || echo "✗ .nojekyll missing"
+          ls -la out/.nojekyll
+          echo ""
+          echo "Checking CSS file:"
+          CSS_FILE=$(grep -oP 'href="[^"]*\.css"' out/index.html | head -1 | sed 's/href="//;s/"//' | sed 's|^/||')
+          echo "CSS path: $CSS_FILE"
+          test -f "out/$CSS_FILE" && echo "✓ CSS file exists at correct path" || echo "✗ CSS file missing"
+          ls -lh "out/$CSS_FILE" || true
+          echo ""
+          echo "Checking _next folder structure:"
+          ls -la out/_next/static/chunks/ | head -5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
