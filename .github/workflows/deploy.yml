@@ -29,17 +29,14 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        working-directory: ./matthias
         run: npm ci
 
       - name: Build
-        working-directory: ./matthias
         run: npm run build
         env:
           NODE_ENV: production
 
       - name: Create .nojekyll file
-        working-directory: ./matthias
         run: touch out/.nojekyll
 
       - name: Setup Pages
@@ -48,7 +45,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './matthias/out'
+          path: './out'
 
   deploy:
     environment:
