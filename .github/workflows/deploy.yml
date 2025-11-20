@@ -37,7 +37,10 @@ jobs:
           NODE_ENV: production
 
       - name: Create .nojekyll file
-        run: touch out/.nojekyll
+        run: |
+          touch out/.nojekyll
+          echo "Created .nojekyll file"
+          ls -la out/ | head -10
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
