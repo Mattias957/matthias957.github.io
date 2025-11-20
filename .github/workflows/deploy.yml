@@ -57,13 +57,16 @@ jobs:
 
       - name: Ensure .nojekyll is present
         run: |
-          if [ ! -f out/.nojekyll ]; then
-            echo "Creating .nojekyll file..."
-            touch out/.nojekyll
-          fi
+          echo "Creating .nojekyll file..."
+          echo "" > out/.nojekyll
           echo ".nojekyll file status:"
           ls -la out/.nojekyll
-          cat out/.nojekyll || echo "(empty file is OK)"
+          echo "Verifying .nojekyll is in artifact root:"
+          test -f out/.nojekyll && echo "✓ .nojekyll exists" || echo "✗ .nojekyll missing"
+          echo "Verifying _next folder exists:"
+          test -d out/_next && echo "✓ _next folder exists" || echo "✗ _next folder missing"
+          echo "Listing root of out directory:"
+          ls -la out/ | grep -E "\.nojekyll|_next"
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
