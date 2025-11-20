@@ -52,7 +52,7 @@ export default function SeoProjectPage() {
       
               <div className="my-10 rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
                 <img 
-                  src="/matthias957.github.io/chromeplugin2.webp" 
+                  src="/chromeplugin2.webp" 
                   alt="Screenshot av Matthias SEO Plugin" 
                   className="w-full h-auto block"
                 />
