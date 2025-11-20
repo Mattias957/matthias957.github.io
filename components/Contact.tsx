@@ -9,7 +9,7 @@ export function Contact() {
         <div className="mb-24">
              <div className="h-24 w-24 mx-auto rounded-full overflow-hidden bg-gray-100 mb-6 ring-4 ring-gray-50">
                 <img 
-                  src="/matthias.webp" 
+                  src="/matthias957.github.io/matthias.webp" 
                   alt="Profile" 
                   className="object-cover object-top w-full h-full"
                 />

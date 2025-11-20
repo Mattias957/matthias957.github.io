@@ -8,7 +8,7 @@ export function Profile() {
           {/* Image Card */}
           <div className="relative rounded-3xl overflow-hidden bg-gray-100 w-full h-[371px] md:h-full">
             <img 
-              src="/matthias.webp" 
+              src="/matthias957.github.io/matthias.webp" 
               alt="Profile" 
               className="object-cover object-top w-full h-full absolute inset-0"
             />
