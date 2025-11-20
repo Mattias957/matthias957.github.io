@@ -96,16 +96,22 @@ jobs:
           echo "=== CSS files in chunks ==="
           find out/_next/static/chunks -name "*.css" -exec ls -lh {} \; || echo "WARNING: No CSS files found!"
           echo ""
-          echo "=== Verifying specific CSS file exists ==="
-          if [ -f "out/_next/static/chunks/05ba829a2c04d516.css" ]; then
-            echo "✓ CSS file found!"
-            ls -lh out/_next/static/chunks/05ba829a2c04d516.css
-            echo "File size check:"
-            wc -c out/_next/static/chunks/05ba829a2c04d516.css
+          echo "=== Verifying CSS file matches HTML reference ==="
+          CSS_REF=$(grep -oP 'href="[^"]*\.css"' out/index.html | head -1 | sed 's/href="//;s/"//')
+          CSS_FILE=$(basename "$CSS_REF")
+          echo "HTML references: $CSS_REF"
+          echo "Looking for: $CSS_FILE"
+          if [ -f "out/_next/static/chunks/$CSS_FILE" ]; then
+            echo "✓ CSS file found and matches HTML reference!"
+            ls -lh "out/_next/static/chunks/$CSS_FILE"
+            echo "File size:"
+            wc -c "out/_next/static/chunks/$CSS_FILE"
           else
-            echo "✗ CSS file missing!"
-            echo "Available files in chunks:"
-            ls -la out/_next/static/chunks/ | grep -E "\.css|\.js" | head -10
+            echo "✗ CSS file referenced in HTML not found!"
+            echo "Available CSS files:"
+            find out/_next/static/chunks -name "*.css" -exec ls -lh {} \;
+            echo ""
+            echo "This indicates a build inconsistency - HTML and CSS hashes don't match!"
           fi
           echo ""
           echo "=== Total files count ==="
