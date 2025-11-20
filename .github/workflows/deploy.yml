@@ -28,6 +28,11 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Clean build directory
+        run: |
+          rm -rf .next out node_modules/.cache
+          echo "Cleaned build directories"
+
       - name: Install dependencies
         run: npm ci
 
