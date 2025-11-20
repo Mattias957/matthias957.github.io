@@ -42,6 +42,15 @@ jobs:
           echo "Created .nojekyll file"
           ls -la out/ | head -10
 
+      - name: Verify build output
+        run: |
+          echo "Checking _next folder exists..."
+          ls -la out/_next/static/chunks/ | head -5
+          echo "Checking .nojekyll exists..."
+          ls -la out/.nojekyll
+          echo "Build output structure:"
+          find out -type d -name "_next" -o -name ".nojekyll" | head -5
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
