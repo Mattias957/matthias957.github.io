@@ -29,7 +29,7 @@ export function Header() {
             <Link href="/" className="flex-shrink-0">
             <div className="h-12 w-12 rounded-full overflow-hidden border-2 border-white shadow-sm">
                <img 
-                 src="/matthias957.github.io/matthias.webp" 
+                 src="/matthias.webp" 
                  alt="Matthias Moreillon" 
                  className="h-full w-full object-cover object-top" 
                />
@@ -87,7 +87,7 @@ export function Header() {
           <Link href="/" className="flex-shrink-0">
             <div className="h-12 w-12 rounded-xl overflow-hidden">
                <img
-                 src="/matthias957.github.io/matthias.webp"
+                 src="/matthias.webp"
                  alt="Matthias Moreillon"
                  className="h-full w-full object-cover object-top"
                />
