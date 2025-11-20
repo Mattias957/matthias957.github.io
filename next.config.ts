@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
     unoptimized: true, // Required for static export
   },
   trailingSlash: true, // Helps with GitHub Pages routing
+  // Ensure proper asset handling for GitHub Pages
+  distDir: "out",
 };
 
 export default nextConfig;
