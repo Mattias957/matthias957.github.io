@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
-  // No basePath needed for username.github.io repositories
+  basePath: "/matthias957.github.io", // Required because site is served from subdirectory
   images: {
     unoptimized: true, // Required for static export
   },
