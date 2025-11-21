@@ -134,6 +134,44 @@ export const projects = [
       </ul>
       <p class="mb-8 text-gray-600 leading-relaxed">SEO Dash är byggt för att lösa verkliga problem: göra SEO-analys snabb, tydlig och komplett — inklusive den rapportering som normalt tar mest tid.</p>
       
+      <div class="my-10 space-y-6">
+        <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
+          <img 
+            src="/seodash1.png" 
+            alt="SEO Dash Overview Screenshot" 
+            class="w-full h-auto block"
+          />
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
+          <img 
+            src="/seodash2.png" 
+            alt="SEO Dash Dashboard Screenshot" 
+            class="w-full h-auto block"
+          />
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
+          <img 
+            src="/seodash3.png" 
+            alt="SEO Dash Analytics Screenshot" 
+            class="w-full h-auto block"
+          />
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
+          <img 
+            src="/seodash4.png" 
+            alt="SEO Dash Reports Screenshot" 
+            class="w-full h-auto block"
+          />
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
+          <img 
+            src="/seodash5.png" 
+            alt="SEO Dash Features Screenshot" 
+            class="w-full h-auto block"
+          />
+        </div>
+      </div>
+      
       <h3 class="text-xl font-bold text-gray-900 mb-4">Resultat</h3>
       <p class="mb-6 text-gray-600 leading-relaxed">Med SEO Dash kan jag nu:</p>
       <ul class="list-disc pl-5 mb-6 space-y-2 text-gray-600">
