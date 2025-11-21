@@ -187,5 +187,13 @@ export const projects = [
       <p class="mb-4 text-gray-600 leading-relaxed font-semibold">Slutresultatet:</p>
       <p class="text-gray-600 leading-relaxed">SEO-arbetet har blivit snabbare, tydligare och mer komplett — exakt det verktyg jag själv saknade men nu använder dagligen.</p>
     `
+  },
+  {
+    slug: "webbdesign-byggbolag-goteborg",
+    title: "Webbdesign för byggbolag i Göteborg",
+    role: "Webbutvecklare & Designer",
+    category: "Webbutveckling",
+    description: "Jag byggde och designade en modern och lättnavigerad hemsida för Stadsrum Bygg & Entreprenad AB som tydligt presenterar tjänsteutbud och kvalitet.",
+    content: ``
   }
 ];
