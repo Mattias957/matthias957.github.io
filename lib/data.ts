@@ -96,18 +96,57 @@ export const projects = [
   },
   {
     slug: "affarsoptimering-dashboard",
-    title: "Affärsoptimering Dashboard",
+    title: "SEO Dash - SEO overview verktyg",
     role: "Fullstack Utvecklare",
     category: "Webbutveckling",
-    description: "Designade och byggde en interaktiv dashboard för realtidsuppföljning av kritiska KPI:er, integrerad med flera datakällor.",
+    description: "Ett eget SEO-dashboard som visualiserar Google Search Console-data snabbare och tydligare för lättare analys",
     content: `
-      <p class="mb-6">Detta projekt handlade om att ge ledningsgruppen en överblick över verksamheten i realtid.</p>
+      <h2 class="text-2xl font-bold text-gray-900 mb-8">SEO Dash — Case Study</h2>
       
-      <h3 class="text-xl font-bold mb-3">Teknisk Stack</h3>
-      <p class="mb-6">Vi använde React för frontend och Node.js för backend. Datan visualiserades med D3.js för att skapa interaktiva och responsiva grafer.</p>
+      <h3 class="text-xl font-bold text-gray-900 mb-4">Problem</h3>
+      <p class="mb-6 text-gray-600 leading-relaxed">När jag arbetade med flera webbplatser samtidigt upplevde jag att Google Search Console var för långsamt och rörigt när man behövde en snabb överblick. Det tog tid att växla mellan projekt, hitta rätt rapporter och förstå vad som faktiskt hade förändrats.</p>
+      <p class="mb-6 text-gray-600 leading-relaxed">För att jobba effektivt med SEO behövde jag:</p>
+      <ul class="list-disc pl-5 mb-6 space-y-2 text-gray-600">
+        <li>snabbare insikter</li>
+        <li>tydligare visualisering</li>
+        <li>en dashboard som fokuserade på det som faktiskt betyder något</li>
+        <li>mindre manuellt arbete och färre upprepade analyser</li>
+        <li>bättre rapportering som inte behövde skapas från grunden varje gång</li>
+      </ul>
+      <p class="mb-8 text-gray-600 leading-relaxed">Kort sagt: Jag saknade ett verktyg som gav mig snabb klarhet — och sparade tid.</p>
       
-      <h3 class="text-xl font-bold mb-3">Implementation</h3>
-      <p>Dashboarden integrerades mot Salesforce, Google Analytics och interna SQL-databaser för att samla all affärskritisk data på ett ställe.</p>
+      <h3 class="text-xl font-bold text-gray-900 mb-4">Lösning</h3>
+      <p class="mb-6 text-gray-600 leading-relaxed">Jag byggde SEO Dash – ett eget SEO-verktyg utvecklat i Next.js, React och Tailwind, integrerat direkt mot Google Search Console API och Google Analytics.</p>
+      <p class="mb-6 text-gray-600 leading-relaxed">SEO Dash hämtar och cachear data lokalt, visualiserar den tydligt och gör det enkelt att förstå utvecklingen på varje webbplats.</p>
+      <p class="mb-6 text-gray-600 leading-relaxed">Utöver SEO-dashboards erbjuder SEO Dash även rapportering och händelsespårning, vilket gör den betydligt kraftfullare än en vanlig GSC-visning.</p>
+      
+      <h4 class="text-lg font-semibold text-gray-900 mb-4">Nyckelfunktioner i SEO Dash</h4>
+      <ul class="list-disc pl-5 mb-8 space-y-2 text-gray-600">
+        <li>Översiktsdashboard med klick, visningar, CTR och position</li>
+        <li>Grafer och tabeller för sökord, landningssidor och långsiktiga trender</li>
+        <li>Automatisk identifiering av tapp, möjligheter och förbättringsområden</li>
+        <li>Indexeringsstatus med tydliga listor över sidor som kräver åtgärd</li>
+        <li>Stöd för flera webbplatser samtidigt</li>
+        <li>SEO-rapporter som kan exporteras för kunder eller interna projekt</li>
+        <li>Schemalagda månadsrapporter som skickas automatiskt</li>
+        <li>Google Analytics-integration med egna custom events</li>
+        <li>Möjlighet att spåra samtal, formulär, klick och egna konverteringar direkt i plattformen</li>
+      </ul>
+      <p class="mb-8 text-gray-600 leading-relaxed">SEO Dash är byggt för att lösa verkliga problem: göra SEO-analys snabb, tydlig och komplett — inklusive den rapportering som normalt tar mest tid.</p>
+      
+      <h3 class="text-xl font-bold text-gray-900 mb-4">Resultat</h3>
+      <p class="mb-6 text-gray-600 leading-relaxed">Med SEO Dash kan jag nu:</p>
+      <ul class="list-disc pl-5 mb-6 space-y-2 text-gray-600">
+        <li>analysera flera webbplatser på sekunder istället för minuter</li>
+        <li>upptäcka trender och problem innan de påverkar trafiken</li>
+        <li>ta bättre beslut tack vare visuellt tydlig data</li>
+        <li>slippa manuella rapporter tack vare automatiserade månadsrapporter</li>
+        <li>se alla viktiga händelser (samtal, formulär, klick) i ett och samma verktyg</li>
+        <li>arbeta mer datadrivet utan att drunkna i olika dashboards</li>
+        <li>spara tid varje dag i både kundprojekt och egna projekt</li>
+      </ul>
+      <p class="mb-4 text-gray-600 leading-relaxed font-semibold">Slutresultatet:</p>
+      <p class="text-gray-600 leading-relaxed">SEO-arbetet har blivit snabbare, tydligare och mer komplett — exakt det verktyg jag själv saknade men nu använder dagligen.</p>
     `
   }
 ];
