@@ -1,3 +1,4 @@
+// Projects list
 export const projects = [
   {
     slug: "seo-chrome-extension",
