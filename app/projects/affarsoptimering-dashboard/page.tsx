@@ -38,6 +38,20 @@ export default function SeoDashProjectPage() {
     </ul>
     <p class="mb-8 text-gray-600 leading-relaxed">SEO Dash är byggt för att lösa verkliga problem: göra SEO-analys snabb, tydlig och komplett — inklusive den rapportering som normalt tar mest tid.</p>
     
+    <h3 class="text-xl font-bold text-gray-900 mb-4">Resultat</h3>
+    <p class="mb-6 text-gray-600 leading-relaxed">Med SEO Dash kan jag nu:</p>
+    <ul class="list-disc pl-5 mb-6 space-y-2 text-gray-600">
+      <li>analysera flera webbplatser på sekunder istället för minuter</li>
+      <li>upptäcka trender och problem innan de påverkar trafiken</li>
+      <li>ta bättre beslut tack vare visuellt tydlig data</li>
+      <li>slippa manuella rapporter tack vare automatiserade månadsrapporter</li>
+      <li>se alla viktiga händelser (samtal, formulär, klick) i ett och samma verktyg</li>
+      <li>arbeta mer datadrivet utan att drunkna i olika dashboards</li>
+      <li>spara tid varje dag i både kundprojekt och egna projekt</li>
+    </ul>
+    <p class="mb-4 text-gray-600 leading-relaxed font-semibold">Slutresultatet:</p>
+    <p class="mb-8 text-gray-600 leading-relaxed">SEO-arbetet har blivit snabbare, tydligare och mer komplett — exakt det verktyg jag själv saknade men nu använder dagligen.</p>
+    
     <div class="my-10 space-y-6">
       <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
         <img 
@@ -75,20 +89,6 @@ export default function SeoDashProjectPage() {
         />
       </div>
     </div>
-    
-    <h3 class="text-xl font-bold text-gray-900 mb-4">Resultat</h3>
-    <p class="mb-6 text-gray-600 leading-relaxed">Med SEO Dash kan jag nu:</p>
-    <ul class="list-disc pl-5 mb-6 space-y-2 text-gray-600">
-      <li>analysera flera webbplatser på sekunder istället för minuter</li>
-      <li>upptäcka trender och problem innan de påverkar trafiken</li>
-      <li>ta bättre beslut tack vare visuellt tydlig data</li>
-      <li>slippa manuella rapporter tack vare automatiserade månadsrapporter</li>
-      <li>se alla viktiga händelser (samtal, formulär, klick) i ett och samma verktyg</li>
-      <li>arbeta mer datadrivet utan att drunkna i olika dashboards</li>
-      <li>spara tid varje dag i både kundprojekt och egna projekt</li>
-    </ul>
-    <p class="mb-4 text-gray-600 leading-relaxed font-semibold">Slutresultatet:</p>
-    <p class="text-gray-600 leading-relaxed">SEO-arbetet har blivit snabbare, tydligare och mer komplett — exakt det verktyg jag själv saknade men nu använder dagligen.</p>
   `;
 
   return (
