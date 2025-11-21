@@ -21,15 +21,15 @@ export default function WebDesignProjectPage() {
     <div class="my-10 space-y-6">
       <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
         <img 
-          src="/webdesign1.png" 
-          alt="Webbdesign för byggbolag - Screenshot 1" 
+          src="/webdesign2.png" 
+          alt="Webbdesign för byggbolag - Screenshot 2" 
           class="w-full h-auto block"
         />
       </div>
       <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
         <img 
-          src="/webdesign2.png" 
-          alt="Webbdesign för byggbolag - Screenshot 2" 
+          src="/webdesign1.png" 
+          alt="Webbdesign för byggbolag - Screenshot 1" 
           class="w-full h-auto block"
         />
       </div>
