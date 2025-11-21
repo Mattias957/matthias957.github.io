@@ -55,8 +55,8 @@ export default function SeoDashProjectPage() {
     <div class="my-10 space-y-6">
       <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
         <img 
-          src="/seodash1.png" 
-          alt="SEO Dash Overview Screenshot" 
+          src="/seodash5.png" 
+          alt="SEO Dash Features Screenshot" 
           class="w-full h-auto block"
         />
       </div>
