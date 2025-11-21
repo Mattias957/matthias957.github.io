@@ -26,7 +26,7 @@ export function Projects() {
                             {project.description}
                         </p>
                         <div className="mt-auto">
-                          <Link href={`/projects/${project.slug}`} className="inline-flex items-center text-[14px] font-medium text-gray-900 hover:text-gray-600 transition-colors">
+                          <Link href={`/projects/${project.slug}/`} className="inline-flex items-center text-[14px] font-medium text-gray-900 hover:text-gray-600 transition-colors">
                             Läs mer
                             <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
