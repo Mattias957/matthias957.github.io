@@ -21,9 +21,17 @@ export function Profile() {
             </div>
 
             <h2 className="text-[21px] font-bold text-gray-900 mb-3">Profil</h2>
-            <p className="text-[14px] text-gray-600 leading-relaxed">
-              Erfaren Digital Marketing Specialist med bevisad meritlista av att använda avancerad analys för att driva strategiskt beslutsfattande och optimera affärsprocesser. Demonstrerad expertis i att utveckla innovativa lösningar på komplexa problem, kombinerat med exceptionell kommunikationsförmåga för att effektivt förmedla insikter till intressenter på alla nivåer.
-            </p>
+            <div className="text-[14px] text-gray-600 leading-relaxed space-y-3">
+              <p>
+                Digital marknadsförare med fokus på SEO, webbutveckling och Google Ads.
+              </p>
+              <p>
+                Drivs av att förstå vad som faktiskt skapar resultat och att förbättra varje del av den digitala kundresan.
+              </p>
+              <p>
+                Med bakgrund inom både dataanalys och e-handel kombinerar jag struktur, teknik och kreativt problemlösande i allt jag gör. Jag bygger även egna verktyg med Next.js, React och Tailwind, som jag använder både i mitt arbete och i mina personliga projekt för att skapa smartare och mer effektiva lösningar.
+              </p>
+            </div>
             
             <div className="flex items-center gap-2 text-gray-500 mt-auto pt-4 text-[14px]">
               <MapPin className="h-4 w-4" />

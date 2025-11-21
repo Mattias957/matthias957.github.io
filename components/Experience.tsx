@@ -2,36 +2,36 @@ import { Briefcase } from "lucide-react";
 
 const experiences = [
   {
-    title: "Data Scientist & Affärskonsult",
-    company: "TechNova",
+    title: "Digital Marketing Associate",
+    company: "Haien",
     type: "Heltid",
-    period: "Jun 2021 - Nuvarande",
-    location: "Phoenix, Arizona, USA",
-    description: "Demonstrerar en sömlös integration av datavetenskap och affärskonsultation, driver effektivt transformativa initiativ och levererar strategiska insikter för att optimera organisatorisk prestanda och underlätta informerat beslutsfattande."
+    period: "2025 - nu",
+    location: "Göteborg",
+    description: "Arbete med SEO, webbutveckling (WordPress), Google Ads, webbanalys, spårning och rapportering. Bygger även egna interna verktyg och plattformar i Next.js, React och Tailwind för att effektivisera processer och förbättra kundresultat."
   },
   {
-    title: "Dataanalytiker & Affärsstrateg",
-    company: "SwiftEdge",
-    type: "Kontrakt",
-    period: "Okt 2017 - Maj 2021",
-    location: "Dallas, Texas, USA",
-    description: "Kombinerar skickligt dataanalys med strategisk affärsförståelse, navigerar komplexa datamängder för att informera strategiska beslut och driva organisatorisk tillväxt."
-  },
-  {
-    title: "Analysspecialist & Affärsrådgivare",
-    company: "NexusWorks",
+    title: "Transport & Inköpskoordinator",
+    company: "H&M",
     type: "Heltid",
-    period: "Jan 2016 - Sep 2017",
-    location: "Houston, Texas, USA",
-    description: "Utnyttjar specialiserad analysexpertis tillsammans med strategisk rådgivning, ger handlingsbara insikter och vägledning för att optimera affärsresultat och uppnå strategiska mål."
+    period: "2021 - 2024",
+    location: "Borås",
+    description: "Ansvarig för e-handelsleveranser i Norden. Koordinerade transporter, optimerade flöden, analyserade KPI:er och arbetade nära lager, transportörer och interna team. Fokus på struktur, problemlösning och effektivisering."
   },
   {
-    title: "Affärskonsult & Analysexpert",
-    company: "ProActive",
-    type: "Praktik",
-    period: "Aug 2014 - Jan 2016",
-    location: "Newark, New Jersey, USA",
-    description: "Integrerar sömlöst affärskonsultation med avancerad analys, levererar skräddarsydda lösningar och handlingsbara insikter för att driva organisatorisk framgång och förbättra strategiska beslutsprocesser."
+    title: "Team Leader",
+    company: "H&M",
+    type: "Heltid",
+    period: "2020 - 2021",
+    location: "Borås",
+    description: "Ledde ett team på 23 personer. Ansvar för schema, arbetsmiljö, utvecklingssamtal, produktion och daglig drift. Byggde upp ledarskapserfarenhet och förmågan att hantera högt tempo och krångliga processer och situationer."
+  },
+  {
+    title: "Lagermedarbetare",
+    company: "H&M",
+    type: "Heltid",
+    period: "2018 - 2020",
+    location: "Borås",
+    description: "Plock, pack, utleverans och allmän logistikhanteirng. Grunden som gav förståelse för e-handel, flöden och kvalitetsarbete."
   }
 ];
 
@@ -45,7 +45,7 @@ export function Experience() {
                     <Briefcase className="h-6 w-6" />
                 </div>
                 <h2 className="text-[21px] font-bold text-gray-900 mb-4">Arbetserfarenhet</h2>
-                <p className="text-gray-600 text-[14px]">Bevisad erfarenhet inom datavetenskap och affärskonsultation, med leverans av effektfulla insikter och resultat över branscher.</p>
+                <p className="text-gray-600 text-[14px]">Min resa inom arbetslivet – från logistik och e-handel till digital marknadsföring och webbutveckling.</p>
             </div>
 
             <div className="relative space-y-12">

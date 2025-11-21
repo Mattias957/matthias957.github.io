@@ -109,21 +109,5 @@ export const projects = [
       <h3 class="text-xl font-bold mb-3">Implementation</h3>
       <p>Dashboarden integrerades mot Salesforce, Google Analytics och interna SQL-databaser för att samla all affärskritisk data på ett ställe.</p>
     `
-  },
-  {
-    slug: "seo-analys-verktyg",
-    title: "SEO Analys Verktyg",
-    role: "Frontend Utvecklare",
-    category: "Digital Marketing",
-    description: "Skapade ett kraftfullt verktyg för SEO-analys som automatiskt granskar webbplatser och genererar detaljerade rapporter med förbättringsförslag.",
-    content: `
-      <p class="mb-6">Som Digital Marketing Specialist såg jag ett behov av ett verktyg som snabbt kunde identifiera "low hanging fruit" inom SEO.</p>
-      
-      <h3 class="text-xl font-bold mb-3">Funktionalitet</h3>
-      <p class="mb-6">Verktyget crawlar en angiven URL och kontrollerar meta-taggar, laddningstider, bildoptimering och struktur på rubriker.</p>
-      
-      <h3 class="text-xl font-bold mb-3">Värde</h3>
-      <p>Detta verktyg har sparat oss hundratals timmar av manuellt granskningsarbete och har hjälpt våra kunder att öka sin organiska trafik markant.</p>
-    `
   }
 ];

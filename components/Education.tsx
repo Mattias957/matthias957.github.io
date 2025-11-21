@@ -3,19 +3,19 @@ import { GraduationCap } from "lucide-react";
 const education = [
   {
     school: "IHM Business School",
-    degree: "Certifiering",
+    degree: "",
     field: "Digital Analytics Specialist",
     period: "2023 - 2025"
   },
   {
     school: "IHM Business School",
-    degree: "Certifiering",
+    degree: "",
     field: "E-commerce Supply & Demand chain",
     period: "2023"
   },
   {
     school: "Ljud och bildskolan",
-    degree: "Yrkesutbildning",
+    degree: "",
     field: "Grafisk Design",
     period: "2011 - 2014"
   }
@@ -31,7 +31,7 @@ export function Education() {
                     <GraduationCap className="h-6 w-6" />
                 </div>
                 <h2 className="text-[21px] font-bold text-gray-900 mb-4">Utbildning</h2>
-                <p className="text-gray-600 text-[14px]">Examina och certifieringar inom specialiserade områden av datavetenskap och affärsanalys.</p>
+                <p className="text-gray-600 text-[14px]">En översikt av de utbildningar som byggt min grund inom marknadsföring och dataanalys.</p>
             </div>
 
             <div className="space-y-8">
@@ -40,8 +40,8 @@ export function Education() {
                         <div>
                             <h3 className="text-lg font-bold text-gray-900 mb-1">{edu.school}</h3>
                             <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 text-gray-600 text-[14px]">
-                                <span>{edu.degree}</span>
-                                <span className="hidden sm:block text-gray-300">•</span>
+                                {edu.degree && <span>{edu.degree}</span>}
+                                {edu.degree && <span className="hidden sm:block text-gray-300">•</span>}
                                 <span className="text-gray-500">{edu.field}</span>
                             </div>
                         </div>
