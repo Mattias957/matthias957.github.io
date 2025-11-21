@@ -2,16 +2,22 @@ import { GraduationCap } from "lucide-react";
 
 const education = [
   {
-    school: "Princeton University",
-    degree: "Masterexamen",
-    field: "Datavetenskap",
-    period: "Sep 2015 - Dec 2016"
+    school: "IHM Business School",
+    degree: "Certifiering",
+    field: "Digital Analytics Specialist",
+    period: "2023 - 2025"
   },
   {
-    school: "Montclair State University",
-    degree: "Kandidatexamen",
-    field: "Artificiell Intelligens",
-    period: "Sep 2011 - Jun 2015"
+    school: "IHM Business School",
+    degree: "Certifiering",
+    field: "E-commerce Supply & Demand chain",
+    period: "2023"
+  },
+  {
+    school: "Ljud och bildskolan",
+    degree: "Yrkesutbildning",
+    field: "Grafisk Design",
+    period: "2011 - 2014"
   }
 ];
 
