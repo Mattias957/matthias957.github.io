@@ -18,6 +18,8 @@ export default function WebDesignProjectPage() {
       <li>Tydlig och modern UI/UX-design – fokus på enkel navigation och tydliga kontaktvägar.</li>
     </ul>
     
+    <h3 class="text-xl font-bold text-gray-900 mb-4">Webbplatsen är fullt responsiv och anpassad för både Desktop och Mobil.</h3>
+    
     <div class="my-10 space-y-6">
       <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
         <img 
