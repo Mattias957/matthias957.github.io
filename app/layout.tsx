@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata: Metadata = {
   title: "Matthias Moreillon - Digital Marketing Specialist",
   description: "Personlig portfölj för Matthias Moreillon, Digital Marketing Specialist.",
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
