@@ -84,22 +84,15 @@ export default function BlogPage() {
                       itemScope
                       itemType="https://schema.org/BlogPosting"
                     >
-                      <div className="flex flex-wrap items-center gap-2 mb-4">
-                        {post.category && (
-                          <span className="px-3 py-1 rounded-full bg-gray-50 text-xs font-bold text-gray-600 border border-gray-100 uppercase tracking-wider">
-                            {post.category}
-                          </span>
-                        )}
-                        <div className="flex items-center text-gray-500 text-sm">
-                          <Calendar className="h-4 w-4 mr-2" />
-                          <time dateTime={post.date}>
-                            {new Date(post.date).toLocaleDateString("sv-SE", {
-                              year: "numeric",
-                              month: "long",
-                              day: "numeric"
-                            })}
-                          </time>
-                        </div>
+                      <div className="flex items-center text-gray-500 text-sm mb-4">
+                        <Calendar className="h-4 w-4 mr-2" />
+                        <time dateTime={post.date}>
+                          {new Date(post.date).toLocaleDateString("sv-SE", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric"
+                          })}
+                        </time>
                       </div>
                       
                       <h2 className="text-2xl font-bold text-gray-900 mb-3">
