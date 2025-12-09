@@ -43,13 +43,6 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             
             {/* Header */}
             <div className="mb-8 border-b border-gray-100 pb-8">
-              <div className="flex items-center gap-2 mb-4">
-                {post.category && (
-                  <span className="px-3 py-1 rounded-full bg-gray-50 text-xs font-bold text-gray-600 border border-gray-100 uppercase tracking-wider">
-                    {post.category}
-                  </span>
-                )}
-              </div>
               <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{post.title}</h1>
               <p className="text-lg text-gray-500 font-medium">{post.excerpt}</p>
             </div>
