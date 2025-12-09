@@ -19,7 +19,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 
   if (!post) {
     return {
-      title: "Blogginlägg hittades inte",
+      title: "Blogginlägg hittades inte | Matthias Moreillon",
+      description: "Blogginlägg hittades inte",
     };
   }
 
