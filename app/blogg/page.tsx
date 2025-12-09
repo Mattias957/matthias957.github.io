@@ -3,14 +3,53 @@ import { Footer } from "@/components/Footer";
 import { blogPosts } from "@/lib/data";
 import Link from "next/link";
 import { Calendar, ArrowRight, ArrowLeft } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blogg | Matthias Moreillon - Digital Marketing Specialist",
+  description: "Tankar, insikter och erfarenheter inom digital marknadsföring, SEO, webbutveckling och mer. Lär dig av mina projekt och erfarenheter.",
+  openGraph: {
+    title: "Blogg | Matthias Moreillon",
+    description: "Tankar, insikter och erfarenheter inom digital marknadsföring, SEO, webbutveckling och mer.",
+    type: "website",
+  },
+};
 
 export default function BlogPage() {
   const sortedPosts = [...blogPosts].sort((a, b) => 
     new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Matthias Moreillon Blogg",
+    "description": "Tankar, insikter och erfarenheter inom digital marknadsföring, SEO, webbutveckling och mer.",
+    "url": "https://matthiasmoreillon.se/blogg/",
+    "author": {
+      "@type": "Person",
+      "name": "Matthias Moreillon",
+      "url": "https://matthiasmoreillon.se"
+    },
+    "blogPost": sortedPosts.map((post) => ({
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.excerpt,
+      "url": `https://matthiasmoreillon.se/blogg/${post.slug}/`,
+      "datePublished": post.date,
+      "author": {
+        "@type": "Person",
+        "name": "Matthias Moreillon"
+      }
+    }))
+  };
+
   return (
     <main className="bg-[#F9F9F9] min-h-screen font-sans antialiased">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <Header />
       
       <section className="pt-32 pb-12 md:pt-40 md:pb-20 px-4">
@@ -42,6 +81,8 @@ export default function BlogPage() {
                     <article 
                       key={post.slug} 
                       className="border-b border-gray-100 pb-8 last:border-0 last:pb-0"
+                      itemScope
+                      itemType="https://schema.org/BlogPosting"
                     >
                       <div className="flex flex-wrap items-center gap-2 mb-4">
                         {post.category && (
@@ -65,14 +106,16 @@ export default function BlogPage() {
                         <Link 
                           href={`/blogg/${post.slug}/`}
                           className="hover:text-gray-600 transition-colors"
+                          itemProp="url"
                         >
-                          {post.title}
+                          <span itemProp="headline">{post.title}</span>
                         </Link>
                       </h2>
                       
-                      <p className="text-gray-600 mb-4 text-[14px] leading-relaxed">
+                      <p className="text-gray-600 mb-4 text-[14px] leading-relaxed" itemProp="description">
                         {post.excerpt}
                       </p>
+                      <meta itemProp="datePublished" content={post.date} />
                       
                       {post.tags && post.tags.length > 0 && (
                         <div className="flex flex-wrap gap-2 mb-4">
