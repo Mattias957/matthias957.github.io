@@ -4,38 +4,12 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ArrowLeft, Calendar } from "lucide-react";
 import Link from "next/link";
-import type { Metadata } from "next";
 
 // Generera statiska parametrar för alla blogginlägg (SSG)
 export function generateStaticParams() {
   return blogPosts.map((post) => ({
     slug: post.slug,
   }));
-}
-
-// Generera metadata för varje blogginlägg
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const post = blogPosts.find((p) => p.slug === params.slug);
-
-  if (!post) {
-    return {
-      title: "Blogginlägg hittades inte | Matthias Moreillon",
-      description: "Blogginlägg hittades inte",
-    };
-  }
-
-  return {
-    title: `${post.title} | Matthias Moreillon Blogg`,
-    description: post.excerpt,
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      type: "article",
-      publishedTime: post.date,
-      authors: ["Matthias Moreillon"],
-      tags: post.tags,
-    },
-  };
 }
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
