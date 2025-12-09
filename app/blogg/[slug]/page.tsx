@@ -2,7 +2,7 @@ import { blogPosts } from "@/lib/data";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { ArrowLeft, Calendar } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 // Generera statiska parametrar för alla blogginlägg (SSG)
@@ -19,38 +19,8 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     notFound();
   }
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": post.title,
-    "description": post.excerpt,
-    "url": `https://matthiasmoreillon.se/blogg/${post.slug}/`,
-    "datePublished": post.date,
-    "dateModified": post.date,
-    "author": {
-      "@type": "Person",
-      "name": "Matthias Moreillon",
-      "url": "https://matthiasmoreillon.se"
-    },
-    "publisher": {
-      "@type": "Person",
-      "name": "Matthias Moreillon",
-      "url": "https://matthiasmoreillon.se"
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": `https://matthiasmoreillon.se/blogg/${post.slug}/`
-    },
-    ...(post.category && { "articleSection": post.category }),
-    ...(post.tags && post.tags.length > 0 && { "keywords": post.tags.join(", ") })
-  };
-
   return (
     <main className="bg-[#F9F9F9] min-h-screen font-sans antialiased">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
       <Header />
       
       {/* Content Section */}
@@ -69,57 +39,28 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           </div>
 
           {/* Blog Post Content Card */}
-          <article className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100" itemScope itemType="https://schema.org/BlogPosting">
+          <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100">
             
             {/* Header */}
-            <header className="mb-8 border-b border-gray-100 pb-8">
-              <div className="flex flex-wrap items-center gap-2 mb-4">
+            <div className="mb-8 border-b border-gray-100 pb-8">
+              <div className="flex items-center gap-2 mb-4">
                 {post.category && (
                   <span className="px-3 py-1 rounded-full bg-gray-50 text-xs font-bold text-gray-600 border border-gray-100 uppercase tracking-wider">
                     {post.category}
                   </span>
                 )}
-                <div className="flex items-center text-gray-500 text-sm">
-                  <Calendar className="h-4 w-4 mr-2" />
-                  <time dateTime={post.date}>
-                    {new Date(post.date).toLocaleDateString("sv-SE", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric"
-                    })}
-                  </time>
-                </div>
               </div>
-              
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4" itemProp="headline">{post.title}</h1>
-              
-              {post.tags && post.tags.length > 0 && (
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {post.tags.map((tag) => (
-                    <span 
-                      key={tag}
-                      className="px-2 py-1 rounded text-xs text-gray-500 bg-gray-50 border border-gray-100"
-                      itemProp="keywords"
-                    >
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-              )}
-            </header>
+              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{post.title}</h1>
+              <p className="text-lg text-gray-500 font-medium">{post.excerpt}</p>
+            </div>
 
             {/* Main Content */}
             <div 
-              className="prose prose-gray max-w-none prose-headings:font-bold prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-6 prose-ul:text-gray-600"
-              itemProp="articleBody"
+              className="prose prose-gray max-w-none prose-headings:font-bold prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-6"
               dangerouslySetInnerHTML={{ __html: post.content }} 
             />
 
-            <meta itemProp="datePublished" content={post.date} />
-            <meta itemProp="dateModified" content={post.date} />
-            <meta itemProp="author" content="Matthias Moreillon" />
-            <meta itemProp="description" content={post.excerpt} />
-          </article>
+          </div>
         </div>
       </section>
 
