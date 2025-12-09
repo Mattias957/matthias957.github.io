@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@source "../app";
+@source "../components";
+@source "../lib";
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 249, 249, 249; /* #F9F9F9 */
+  --background-end-rgb: 249, 249, 249;
+}
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

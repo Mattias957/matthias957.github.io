@@ -1,0 +1,202 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Ensure GitHub Pages is enabled in repository settings:
+# Settings → Pages → Source: "GitHub Actions"
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Clean build directory
+        run: |
+          rm -rf .next out node_modules/.cache
+          echo "Cleaned build directories"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Create .nojekyll file
+        run: |
+          # Ensure .nojekyll exists in both public (for build) and out (for deployment)
+          # The one in public/ gets copied during build, but we also create it in out/ to be sure
+          touch public/.nojekyll
+          touch out/.nojekyll
+          echo "Created .nojekyll files"
+          echo "In public folder:"
+          ls -la public/.nojekyll || echo "WARNING: Not in public/"
+          echo "In out folder:"
+          ls -la out/.nojekyll || echo "WARNING: Not in out/"
+
+      - name: Verify build output
+        run: |
+          echo "Checking _next folder exists..."
+          ls -la out/_next/static/chunks/ | head -5
+          echo "Checking .nojekyll exists..."
+          ls -la out/.nojekyll || echo "ERROR: .nojekyll not found!"
+          echo "Build output structure:"
+          find out -type d -name "_next" -o -name ".nojekyll" | head -5
+          echo "Total files in out:"
+          find out -type f | wc -l
+          echo "Sample of files being deployed:"
+          find out -type f | head -20
+
+      - name: Ensure .nojekyll is present
+        run: |
+          echo "Creating empty .nojekyll file (standard practice)..."
+          touch out/.nojekyll
+          echo ".nojekyll file status:"
+          ls -la out/.nojekyll
+          echo "File size (should be 0):"
+          wc -c out/.nojekyll
+          echo ""
+          echo "Verifying .nojekyll is in artifact root:"
+          test -f out/.nojekyll && echo "✓ .nojekyll exists" || echo "✗ .nojekyll missing"
+          echo "Verifying _next folder exists:"
+          test -d out/_next && echo "✓ _next folder exists" || echo "✗ _next folder missing"
+          echo ""
+          echo "Listing root of out directory (first 15 items):"
+          ls -la out/ | head -15
+          echo ""
+          echo "Checking if CSS file exists:"
+          find out/_next -name "*.css" -type f | head -3
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: List files to be uploaded
+        run: |
+          echo "=== Files in out/ root ==="
+          ls -la out/ | head -20
+          echo ""
+          echo "=== Checking for .nojekyll ==="
+          ls -la out/.nojekyll || echo "WARNING: .nojekyll not found!"
+          echo ""
+          echo "=== Checking for _next folder ==="
+          ls -la out/_next/static/chunks/ | head -15 || echo "WARNING: _next folder not found!"
+          echo ""
+          echo "=== CSS files in chunks ==="
+          find out/_next/static/chunks -name "*.css" -exec ls -lh {} \; || echo "WARNING: No CSS files found!"
+          echo ""
+          echo "=== Verifying CSS file matches HTML reference ==="
+          CSS_REF=$(grep -oP 'href="[^"]*\.css"' out/index.html | head -1 | sed 's/href="//;s/"//')
+          CSS_FILE=$(basename "$CSS_REF")
+          echo "HTML references: $CSS_REF"
+          echo "Looking for: $CSS_FILE"
+          if [ -f "out/_next/static/chunks/$CSS_FILE" ]; then
+            echo "✓ CSS file found and matches HTML reference!"
+            ls -lh "out/_next/static/chunks/$CSS_FILE"
+            echo "File size:"
+            wc -c "out/_next/static/chunks/$CSS_FILE"
+          else
+            echo "✗ CSS file referenced in HTML not found!"
+            echo "Available CSS files:"
+            find out/_next/static/chunks -name "*.css" -exec ls -lh {} \;
+            echo ""
+            echo "This indicates a build inconsistency - HTML and CSS hashes don't match!"
+          fi
+          echo ""
+          echo "=== Total files count ==="
+          find out -type f | wc -l
+
+      - name: Final verification before upload
+        run: |
+          echo "=== Final verification ==="
+          echo "Checking .nojekyll in artifact root:"
+          test -f out/.nojekyll && echo "✓ .nojekyll exists" || echo "✗ .nojekyll missing"
+          ls -la out/.nojekyll
+          echo ""
+          echo "Checking CSS file:"
+          CSS_FILE=$(grep -oP 'href="[^"]*\.css"' out/index.html | head -1 | sed 's/href="//;s/"//' | sed 's|^/||')
+          echo "CSS path: $CSS_FILE"
+          test -f "out/$CSS_FILE" && echo "✓ CSS file exists at correct path" || echo "✗ CSS file missing"
+          ls -lh "out/$CSS_FILE" || true
+          echo ""
+          echo "Checking _next folder structure:"
+          ls -la out/_next/static/chunks/ | head -5
+
+      - name: Verify .nojekyll before upload
+        run: |
+          echo "=== Final check before upload ==="
+          echo "Current directory:"
+          pwd
+          echo ""
+          echo "Listing out directory:"
+          ls -la out/ | head -10
+          echo ""
+          echo "Verifying .nojekyll exists and is in root:"
+          if [ -f "out/.nojekyll" ]; then
+            echo "✓ .nojekyll exists at out/.nojekyll"
+            ls -la out/.nojekyll
+            echo "File content (should be empty):"
+            cat out/.nojekyll || echo "(empty file)"
+          else
+            echo "✗ ERROR: .nojekyll NOT FOUND in out/"
+            echo "Creating it now..."
+            touch out/.nojekyll
+            ls -la out/.nojekyll
+          fi
+          echo ""
+          echo "Verifying _next folder:"
+          if [ -d "out/_next" ]; then
+            echo "✓ _next folder exists"
+            ls -la out/_next/static/chunks/ | head -3
+          else
+            echo "✗ ERROR: _next folder NOT FOUND"
+          fi
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './out'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+      
+      - name: Deployment info
+        run: |
+          echo "Site deployed to: ${{ steps.deployment.outputs.page_url }}"
+          echo ""
+          echo "Note: GitHub Pages may take a few minutes to update."
+          echo "If CSS still doesn't load:"
+          echo "1. Wait 2-3 minutes for GitHub Pages to process"
+          echo "2. Hard refresh your browser (Ctrl+F5 or Cmd+Shift+R)"
+          echo "3. Check if .nojekyll is accessible at: ${{ steps.deployment.outputs.page_url }}/.nojekyll"
+          echo "4. Check if CSS is accessible at: ${{ steps.deployment.outputs.page_url }}/_next/static/chunks/d98cb5eccc663e52.css"
+
